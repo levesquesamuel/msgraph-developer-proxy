@@ -6,6 +6,11 @@
       "pluginPath": "GraphProxyPlugins\\msgraph-developer-proxy-plugins.dll"
     },
     {
+      "name": "GraphDecorationGuidancePlugin",
+      "enabled": true,
+      "pluginPath": "GraphProxyPlugins\\msgraph-developer-proxy-plugins.dll"
+    },
+    {
       "name": "GraphBetaSupportGuidancePlugin",
       "enabled": true,
       "pluginPath": "GraphProxyPlugins\\msgraph-developer-proxy-plugins.dll",
