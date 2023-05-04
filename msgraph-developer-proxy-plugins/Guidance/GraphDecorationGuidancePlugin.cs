@@ -31,13 +31,11 @@ public class GraphDecorationGuidancePlugin : BaseProxyPlugin {
 
     private static bool WarnNoDecoration(Request request) =>
         ProxyUtils.IsGraphRequest(request) &&
-        !Regex.IsMatch(request.Headers.GetFirstHeader("User-Agent").Value, "^(ISV|NONISV)\\|[A-Za-z]+\\|[A-Za-z]+\\|[0-9]+\\.[0-9]+");
+        !Regex.IsMatch(request.Headers.GetFirstHeader("User-Agent").Value, "^(ISV|NONISV)\\|[A-Za-z0-9]+\\|[A-Za-z0-9]+\\/[0-9]+\\.[0-9]+");
         
-        //
         //This pattern will match any string that starts with “ISV” or “NONISV” followed by “|” and any company name consisting of one or more alphabets followed by “|” and any application name consisting of one or more alphabets followed by “/” and any decimal number for the version.
 
 
-
     private static string GetDecorationParameterGuidanceUrl() => "https://learn.microsoft.com/en-us/sharepoint/dev/general-development/how-to-avoid-getting-throttled-or-blocked-in-sharepoint-online#how-to-decorate-your-http-traffic";
-    private static string[] BuildUseDecorationMessage(Request r) => new[] { $"Make sure to include User Agent string in your API call to SharePoint with following naming convention", $"More info at {GetDecorationParameterGuidanceUrl()}" };
+    private static string[] BuildUseDecorationMessage(Request r) => new[] { $"Make sure to include User Agent string in your API call to SharePoint with the appropriate naming convention. Ex : NONISV|CompanyName|AppName/1.0", $"More info at {GetDecorationParameterGuidanceUrl()}" };
 }
